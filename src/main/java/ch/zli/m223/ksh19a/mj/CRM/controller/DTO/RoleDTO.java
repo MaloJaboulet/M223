@@ -1,4 +1,4 @@
-package ch.zli.m223.ksh19a.mj.CRM.controller;
+package ch.zli.m223.ksh19a.mj.CRM.controller.DTO;
 
 import ch.zli.m223.ksh19a.mj.CRM.model.Role;
 

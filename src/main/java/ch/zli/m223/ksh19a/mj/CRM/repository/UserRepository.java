@@ -9,12 +9,12 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<AppUserImpl, Long> {
 
 
-    default AppUser insert(String userName) {
-        AppUserImpl user = new AppUserImpl(userName);
+    default AppUser insert(String email, String password) {
+        AppUserImpl user = new AppUserImpl(email, password);
         return save(user);
     }
 
-    Optional<AppUserImpl> findUserByName(String name);
+    Optional<AppUserImpl> findUserByEmail(String email);
 
-    Long deleteByName(String name);
+    Long deleteByEmail(String name);
 }

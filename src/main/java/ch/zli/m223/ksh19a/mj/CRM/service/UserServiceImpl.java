@@ -31,25 +31,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public AppUser insertUser(String name) {
-        if (name == null) {
+    public AppUser insertUser(String email, String password) {
+        if (email == null) {
             throw new InvalidArgumentException("Name must no be null");
         }
-        if (userRepository.findUserByName(name).isPresent()) {
-            throw new UserAlreadyExistsException("User with name " + name + " already exists.");
+        if (userRepository.findUserByEmail(email).isPresent()) {
+            throw new UserAlreadyExistsException("User with name " + email + " already exists.");
         }
 
-        return userRepository.insert(name);
+        return userRepository.insert(email, password);
     }
 
     @Override
     @Transactional
-    public Long deleteUser(String name) {
-        if (name == null) {
+    public Long deleteUser(String email) {
+        if (email == null) {
             throw new InvalidArgumentException("Name must no be null");
         }
-        if (userRepository.findUserByName(name).isPresent()) {
-            return userRepository.deleteByName(name);
+        if (userRepository.findUserByEmail(email).isPresent()) {
+            return userRepository.deleteByEmail(email);
         }
         return -1L;
     }

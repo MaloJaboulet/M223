@@ -9,7 +9,7 @@ public interface UserService {
 
     AppUser getUser(Long id);
 
-    AppUser insertUser(String name);
+    AppUser insertUser(String name, String password);
 
     Long deleteUser(String name);
 }
